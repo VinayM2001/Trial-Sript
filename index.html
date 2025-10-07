@@ -1,24 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Model Viewer GLB</title>
-    <script type="module"
-        src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js">
-    </script>
-    <style>
-        model-viewer {
-            width: 100vw;
-            height: 100vh;
-            background-color: #ffffff;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>3D Car Model with Annotations</title>
+
+  <!-- model-viewer script -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+</script>
+
+  <style>
+    body {
+      margin: 0;
+      background: #ffffff;
+    }
+
+    model-viewer {
+      width: 100vw;
+      height: 100vh;
+      --poster-color: transparent;
+    }
+
+    /* Simple hotspot label styling */
+    .hotspot {
+      background: rgba(255, 255, 255, 0.301);
+      stroke-width: 0%;
+      color: rgb(0, 0, 0);
+      padding: 5px 10px;
+      border-radius: 30px;
+      font-family: Franklin Gothic Medium;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .hotspot:hover {
+       background: rgba(0, 0, 0, 0.889); 
+       color: rgb(255, 255, 255);
+    }
+      
+  </style>
 </head>
 <body>
-    <model-viewer
-        src="model.glb"
-        alt="A 3D model"
-        auto-rotate
-        camera-controls>
-    </model-viewer>
+  <model-viewer
+    src="model.glb"
+    alt="3D Car Model"
+    camera-controls
+    min-camera-orbit="auto 0deg auto"
+max-camera-orbit="auto 90deg auto"
+    shadow-intensity="1"
+    exposure="1">
+
+    <!-- 🚘 Hotspots / Annotations -->
+    <button class="hotspot" slot="hotspot-1" data-position="0.0m 0.007286m 0.019447m" data-normal="0m 0m 0m">
+      Front Bumper
+    </button>
+
+    <button class="hotspot" slot="hotspot-2" data-position="-0.00958m 0.008319m 0.000287m" data-normal="0m 0m 0m">
+      Left Door
+    </button>
+
+    <button class="hotspot" slot="hotspot-3" data-position="0.000127m 0.011141m -0.019631m" data-normal="0m 0m 0m" href="https://autoprotoway.com/wp-content/uploads/2024/10/custom-car-bumper.jpg">
+      Rear Spoiler
+    </button>
+
+  </model-viewer>
 </body>
 </html>
