@@ -6,15 +6,6 @@
 
   <!-- model-viewer script -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
-window.addEventListener("deviceorientation", (event) => {
-  const alpha = event.alpha; // rotation around z-axis → compass
-  const modelViewer = document.querySelector("model-viewer");
-  
-  // Apply the rotation to your model (rotate around Y)
-  if (alpha !== null) {
-    modelViewer.cameraOrbit = `${alpha}deg 75deg auto`;
-  }
-});
   </script>
 
   <style>
